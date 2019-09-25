@@ -1,0 +1,54 @@
+{
+    "name": "envant/attachments",
+    "description": "Laravel Attachments",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Boris Lepikhin",
+            "email": "lepikhinb@gmail.com",
+            "homepage": "https://envant.me"
+        }
+    ],
+    "homepage": "https://github.com/envant/attachments",
+    "keywords": ["Laravel", "Attachments", "file", "media"],
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "^5.8|^6.0",
+        "illuminate/database": "^5.8|^6.0",
+        "illuminate/routing": "^5.8|^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.0",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Envant\\Attachments\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Envant\\Attachments\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Envant\\Attachments\\Providers\\AttachmentsServiceProvider"
+            ],
+            "aliases": {
+                "Attachments": "Envant\\Attachments\\Facades\\Attachments"
+            }
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
