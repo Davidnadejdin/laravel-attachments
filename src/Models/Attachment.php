@@ -35,7 +35,7 @@ class Attachment extends Model
 
     /**
      * Uploader
-
+     * 
      * @return BelongsTo|User
      */
     public function user(): BelongsTo
