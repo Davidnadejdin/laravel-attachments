@@ -25,7 +25,7 @@ class AttachmentRequest extends FormRequest
     {
         return [
             'file' => 'required|file',
-            'uuid' => 'nullable|uuid',
+            'uuid' => 'required|uuid',
             'model_type' => 'required|string',
             'name' => 'nullable|string|max:255',
         ];
