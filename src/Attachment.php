@@ -91,7 +91,7 @@ class Attachment extends Model
      * @return string
      * @throws Exception
      */
-    protected function getAuthModelName()
+    public static function getAuthModelName()
     {
         if (config('attachments.user_model')) {
             return config('attachments.user_model');
@@ -101,7 +101,7 @@ class Attachment extends Model
             return config('auth.providers.users.model');
         }
 
-        throw new Exception('Could not determine the commentator model name.');
+        throw new Exception('Could not determine the user model name.');
     }
 
     /**

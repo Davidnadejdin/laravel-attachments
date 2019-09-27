@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Envant\Attachments\Models\Attachment;
+use Envant\Attachments\Attachment;
 
 class CreateAttachmentsTable extends Migration
 {
@@ -14,11 +14,14 @@ class CreateAttachmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create(Attachment::getModel()->getTable(), function (Blueprint $table) {
+        $userClass = Attachment::getAuthModelName();
+        $userModel = new $userClass();
+
+        Schema::create(Attachment::getModel()->getTable(), function (Blueprint $table) use ($userModel) {
             $table->bigIncrements('id');
             $table->string('uuid');
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on(Attachment::getModel()->getAuthModelName())->onDelete('set null');
+            $table->foreign('user_id')->references($userModel->getKeyName())->on($userModel->getTable())->onDelete('set null');
             $table->bigInteger('model_id')->unsigned()->nullable();
             $table->string('model_type')->nullable();
             $table->string('path');
