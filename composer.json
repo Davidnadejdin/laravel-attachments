@@ -36,11 +36,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Envant\\Attachments\\Providers\\AttachmentsServiceProvider"
-            ],
-            "aliases": {
-                "Attachments": "Envant\\Attachments\\Facades\\Attachments"
-            }
+                "Envant\\Attachments\\AttachmentsServiceProvider"
+            ]
         }
     },
     "scripts": {

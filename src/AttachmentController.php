@@ -1,13 +1,13 @@
 <?php
 
-namespace Envant\Attachments\Controllers;
+namespace Envant\Attachments;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
 use Envant\Attachments\Requests\AttachmentRequest;
 use Envant\Attachments\Resources\AttachmentResource;
-use Envant\Attachments\Models\Attachment;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class AttachmentController extends Controller
 {
@@ -30,7 +30,7 @@ class AttachmentController extends Controller
         $attachment = Attachment::create([
             'user_id' => $this->user ? $this->user->id : null,
             'uuid' => $request->uuid ?? Str::uuid(),
-            'model_type' => $request->model,
+            'model_type' => $request->model_type,
             'path' => $path,
             'extension' => $file->getClientOriginalExtension(),
             'name' => $request->name ?? $file->getClientOriginalName(),

@@ -2,7 +2,6 @@
 
 namespace Envant\Attachments;
 
-use Envant\Attachments\Models\Attachment;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasAttachments
@@ -27,6 +26,6 @@ trait HasAttachments
      */
     public function attachments(): MorphMany
     {
-        return $this->morphMany(Attachment::class, 'model');
+        return $this->morphMany(config('attachments.model'), 'model');
     }
 }

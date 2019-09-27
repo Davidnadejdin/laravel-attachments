@@ -24,9 +24,9 @@ class AttachmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'file',
+            'file' => 'required|file',
             'uuid' => 'nullable|uuid',
-            'model' => 'string',
+            'model_type' => 'required|string',
             'name' => 'nullable|string|max:255',
         ];
     }

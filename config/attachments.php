@@ -2,7 +2,7 @@
 
 return [
     'table' => 'attachments',
-    'attachment_class' => Envant\Attachments\Models\Attachment::class,
+    'model' => Envant\Attachments\Attachment::class,
     'user_model' => null,
     'storage' => [
         'disk' => 'public',
@@ -10,7 +10,7 @@ return [
     ],
     'routes' => [
         'enabled' => true,
-        'controller' => 'Envant\Attachments\Controllers\AttachmentController',
+        'controller' => Envant\Attachments\AttachmentController::class,
         'middleware' => 'api',
         'prefix' => 'api',
     ],
