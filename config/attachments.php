@@ -11,7 +11,9 @@ return [
     'routes' => [
         'enabled' => true,
         'controller' => Envant\Attachments\AttachmentController::class,
-        'middleware' => 'auth:api',
+        'middleware' => [
+            'api', 'auth:api'
+        ],
         'prefix' => 'api',
     ],
 ];
