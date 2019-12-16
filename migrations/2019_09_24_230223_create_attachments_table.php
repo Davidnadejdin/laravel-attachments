@@ -15,14 +15,12 @@ class CreateAttachmentsTable extends Migration
     public function up()
     {
         $userClass = Attachment::getAuthModelName();
-        $userModel = new $userClass();
 
-        Schema::create(Attachment::getModel()->getTable(), function (Blueprint $table) use ($userModel) {
+        Schema::create(Attachment::getModel()->getTable(), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid');
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references($userModel->getKeyName())->on($userModel->getTable())->onDelete('set null');
-            $table->bigInteger('model_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('model_id')->unsigned()->nullable();
             $table->string('model_type')->nullable();
             $table->string('path');
             $table->string('name')->nullable();
@@ -42,6 +40,6 @@ class CreateAttachmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attachments');
+        Schema::dropIfExists(Attachment::getModel()->getTable());
     }
 }
